@@ -18,9 +18,6 @@ Who maintains and contributes to the project?
 
 Mitchell Ramsey PTA
 
-<!DOCTYPE html>
-<html lang="en">
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,44 +29,13 @@ Mitchell Ramsey PTA
         textarea { width: 100%; height: 100px; margin-top: 10px; }
     </style>
 
-    <!-- <style>
-        body { 
-    font-family: Arial, sans-serif; 
-    margin: 20px; 
-    max-width: 600px;
-}
-
-textarea {
-    width: 100%; 
-    height: 100px; 
-    margin-top: 10px;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-
-
-    </style> -->
 </head>
 <body>
     
     <h2>Physical Therapy Documentation Generator</h2>
 
-    <p>Welcome to my documentation generator. I wish to provide concise, consistently formatted notes to save clinicians time.</p>
-    <p>To that end I will use common abbreviations, formulaic strucutre. Ex: <b>Transfer x AD x Assist + VC: Cue 1, Cue 2, etc.</b></p>
-    <p>Lets face it documentation sucks. After a day of treatment, who wants to write an essay.</p>
-    <p>Join me in making documentation short, predictable and repeatable. Try it out!</p>
+    <p>Welcome to my documentation generator! Save time with concise, consistently formatted notes. I use common abbreviations and a structured format <b>Example: Transfer × AD × Assist + VC for Cue 1, Cue 2, etc. </b>Let’s face it documentation sucks. After a full day of treatment, who wants to write an essay? Make your notes short, predictable, and repeatable. Try it out!</p>
+    <p>By Mitchell Ramsey PTA, enjoy!</p>
     <h1>Instructions</h1>
     <ol>
         <li>Select Training and measures</li>
@@ -84,10 +50,11 @@ button:hover {
             <option value=""></option>
             <option value="STS">STS = Sit to Stand</option>
             <option value="SPT">SPT = Stand Pivot Transfer</option>
+            <option value="Squat Pivot">Squat Pivot</option>
             <option value="SB transfer">SB = Slide Board</option>
             <option value="Supine to Sit">Supine to Sit</option>
-            <option value="Squat Pivot">Squat Pivot</option>
             <option value="Bed to Chair">Bed to Chair</option>
+            <option value="Chair to Chair">Chair to Chair</option>
         </select>
 
         <label for="assistiveDevice">Assistive Device:</label>
@@ -127,7 +94,7 @@ button:hover {
             <option value="Min A">Min A</option>
             <option value="Mod-Min A">Min-CGA</option>
             <option value="Mod A">Mod A</option>
-            <option value="Max-Mod A">Min-CGA</option>
+            <option value="Max-Mod A">Max-Mod</option>
             <option value="Max A">Max A</option>
             <option value="Max A x 2 persons">Max A x 2 persons</option>
             <option value="(TD+)">TD+ = Total Dependent Patient Assisting</option>
@@ -140,13 +107,15 @@ button:hover {
         <label for="cues">Cue Type?</label>
         <select id="cues">
             <option value=""></option>
-            <option value="cues from therapist">no cues from therapist</option>
-            <option value="VC">VC</option>
+            <option value="no cues from therapist">no cues from therapist</option>
+            <option value="VC">VC = Verbal Cues</option>
             <option value="VC / TC">VC / TC</option>
-            <option value="TC">TC</option>
+            <option value="TC">TC = Tactile Cues</option>
             <option value="HHA">HHA = Hand Held Assist</option>
             <option value="Visual Demo">Visual Demo</option>
             <option value="mirroring therapist">mirroring therapist</option>
+            
+
         </select>
 
         <label for="percentCue">% Cues Given?</label>
@@ -163,11 +132,11 @@ button:hover {
         <select id="specificCue">
             <option value=" "></option>
             <option value="no cues given">no cues</option>
-            <option value="sit to stand sequence">sit to stand sequence</option>
-            <option value="safe hand and foot placement">safe hand and foot placement</option>
-            <option value="nose over toes">nose over toes</option>
-            <option value="weight shifting">weight shifting</option>
-            <option value="transfer technique">transfer technique</option>
+            <option value="for sit to stand sequence">sit to stand sequence</option>
+            <option value="for safe hand and foot placement">safe hand and foot placement</option>
+            <option value="for nose over toes">nose over toes</option>
+            <option value="for weight shifting">weight shifting</option>
+            <option value="for transfer technique">transfer technique</option>
         </select>
 
         <button type="button" onclick="generateDocumentation('transfer')">Generate Transfer</button>
@@ -197,11 +166,13 @@ button:hover {
             <option value="SBQC">SBQC</option>
             <option value="WBQC">WBQC</option>
             <option value="Crutches">Crutches</option>
+            <option value="Loftstrand Crutches">Loftstrand Crutches</option>
         </select>
 
         <label for="ambAssist">Assist Level</label>
         <select id="ambAssist">
-            <option value="I">I = Independent</option>
+            <option value=""></option>
+            <option value="(I)">I = Independent</option>
             <option value="MI">MI = Modified Independent</option>
             <option value="S/U">S/U = Set Up</option>
             <option value="SUP">SUP = Supervised</option>
@@ -213,7 +184,7 @@ button:hover {
             <option value="Min A">Min A</option>
             <option value="Mod-Min A">Min-CGA</option>
             <option value="Mod A">Mod A</option>
-            <option value="Max-Mod A">Min-CGA</option>
+            <option value="Max-Mod A">Max-Mod</option>
             <option value="Max A">Max A</option>
             <option value="Max A x 2 persons">Max A x 2 persons</option>
             <option value="(TD+)">TD+ = Total Dependent Patient Assisting</option>
@@ -232,27 +203,29 @@ button:hover {
         <label for="ambCueType">Cue Type?</label>
         <select id="ambCueType">
             <option value=""></option>
-            <option value="VC">VC</option>
-            <option value="TC">TC</option>
-            <option value="HHA">HHA</option>
+            <option value="no cues from therapist">no cues from therapist</option>
+            <option value="VC">VC = Verbal Cues</option>
+            <option value="VC / TC">VC / TC</option>
+            <option value="TC">TC = Tactile Cues</option>
+            <option value="HHA">HHA = Hand Held Assist</option>
             <option value="Visual Demo">Visual Demo</option>
             <option value="mirroring therapist">mirroring therapist</option>
-            <option value="feedback using mirror">using mirror</option>
         </select>
 
         <label for="ambSpecificCue">Specific Cue?</label>
         <select id="ambSpecificCue">
             <option value=" "></option>
-            <option value="normalized Gt pattern">normalized Gt pattern</option>
-            <option value="step length c height">step length c height</option>
-            <option value="upright posture">upright posture</option>
-            <option value="glute and core activation">glute and core activation</option>
-            <option value="proper BOS">BOS = Base of Support</option>
-            <option value="proper COG">COG = Center of Gravity</option>
-            <option value="scanning environment">scanning environment</option>
-            <option value="2 pt gait">2 point gait</option>
-            <option value="3 pt gait">3 point gait</option>
-            <option value="4 pt gait">4 point gait</option>
+            <option value="for normalized Gt pattern">normalized Gt pattern</option>
+            <option value="for step length and height">step length and height</option>
+            <option value="for upright posture">upright posture</option>
+            <option value="for glute and core activation">glute and core activation</option>
+            <option value="for proper BOS">BOS = Base of Support</option>
+            <option value="for proper COG">COG = Center of Gravity</option>
+            <option value="for scanning environment">scanning environment</option>
+            <option value="for 2 pt gait">2 point gait</option>
+            <option value="for 3 pt gait">3 point gait</option>
+            <option value="for 4 pt gait">4 point gait</option>
+            <option value="to prevent substitutions">prevent substitutions</option>
         </select>
 
         <button type="button" onclick="generateDocumentation('ambulation')">Generate Ambulation</button>
@@ -269,19 +242,21 @@ button:hover {
 
         <label for="strHeight">Stair Height?</label>
         <select id="strHeight">
-            <option value="2">2</option>
-            <option value="4">4</option>
-            <option value="6">6</option>
-            <option value="8">8</option>
-            <option value="varying height">varied</option>
+            <option value=""></option>
+            <option value="curb step">curb step</option>
+            <option value="2 inch">2 inch</option>
+            <option value="4 inch">4 inch</option>
+            <option value="6 inch">6 inch</option>
+            <option value="8 inch">8 inch</option>
+            <option value="at varying">varied height</option>
         </select>
 
         <label for="strAD">strAD:</label>
         <select id="strAD">
+            <option value="no AD">no AD</option>
             <option value="BHR">BHR</option>
             <option value="RHR">RHR</option>
             <option value="LHR">LHR</option>
-            <option value="no AD">no AD</option>
             <option value="2WW">2WW</option>
             <option value="4WW">4WW</option>
             <option value="RW PLATFM">RW PLATFM</option>
@@ -295,7 +270,8 @@ button:hover {
 
         <label for="strAssist">Assist Level</label>
         <select id="strAssist">
-            <option value="I">I = Independent</option>
+            <option value=""></option>
+            <option value="(I)">I = Independent</option>
             <option value="MI">MI = Modified Independent</option>
             <option value="S/U">S/U = Set Up</option>
             <option value="SUP">SUP = Supervised</option>
@@ -307,7 +283,7 @@ button:hover {
             <option value="Min A">Min A</option>
             <option value="Mod-Min A">Min-CGA</option>
             <option value="Mod A">Mod A</option>
-            <option value="Max-Mod A">Min-CGA</option>
+            <option value="Max-Mod A">Max-Mod</option>
             <option value="Max A">Max A</option>
             <option value="Max A x 2 persons">Max A x 2 persons</option>
             <option value="(TD+)">TD+ = Total Dependent Patient Assisting</option>
@@ -317,6 +293,7 @@ button:hover {
         <label for="strCuePercent">% Cues Given?</label>
         <select id="strCuePercent">
             <option value=""></option>
+            <option value="0%">0%</option>
             <option value="25%">25%</option>
             <option value="50%">50%</option>
             <option value="75%">75%</option>
@@ -326,20 +303,24 @@ button:hover {
         <label for="strCueType">Cue Type?</label>
         <select id="strCueType">
             <option value=""></option>
-            <option value="VC">VC</option>
-            <option value="TC">TC</option>
-            <option value="HHA">HHA</option>
+            <option value="no cues from therapist">no cues from therapist</option>
+            <option value="VC">VC = Verbal Cues</option>
+            <option value="VC / TC">VC / TC</option>
+            <option value="TC">TC = Tactile Cues</option>
+            <option value="HHA">HHA = Hand Held Assist</option>
             <option value="Visual Demo">Visual Demo</option>
             <option value="mirroring therapist">mirroring therapist</option>
         </select>
 
         <label for="strSpecificCue">Specific Cue?</label>
         <select id="strSpecificCue">
-            <option value=" "></option>
-            <option value="step-to pattern">step too pattern</option>
-            <option value="reciprocal pattern">reciprocal pattern</option>
-            <option value="good up bad down">good up bad down</option>
-            <option value="eccentric control">eccentric control</option>
+            <option value=""></option>
+            <option value="no cues given">no cues given</option>
+            <option value="for step-to pattern">step too pattern</option>
+            <option value="for reciprocal pattern">reciprocal pattern</option>
+            <option value="for good up bad down">good up bad down</option>
+            <option value="for eccentric control">eccentric control</option>
+            <option value="for safe hand and foot placement">hand/foot placement</option>
         </select>
 
          <!-- <button type="button" onclick="strText()">Generate Stairs</button> -->
@@ -421,7 +402,8 @@ button:hover {
         <label for="exResistance">Exercise Resistance</label>
         <select id="exResistance">
             <option value=""></option>
-            <option value="2# AW">2 lb AW = Ankle Weight</option>
+            <option value="using bodyweight">bodyweight</option>
+            <option value="2# AW">2# AW = Ankle Weight</option>
             <option value="3# AW">3# AW</option>
             <option value="4# AW">4# AW</option>
             <option value="5# AW">5# AW</option>
@@ -555,10 +537,10 @@ button:hover {
     let values = fields[type].map(id => document.getElementById(id).value);
     
     let templates = {
-        transfer: `Pt performed ${values[0]} ${values[1]} ${values[2]} ${values[3]} reps + ${values[4]} ${values[5]}: ${values[6]}.`,
-        ambulation: `Pt performed ${values[0]}'x${values[1]} bouts ${values[2]} ${values[3]} + ${values[4]} ${values[5]}: ${values[6]}.`,
-        stairs: `Pt performed ${values[0]} steps at ${values[1]}" height ${values[2]} ${values[3]} + ${values[4]} ${values[5]}: ${values[6]}.`,
-        exercise: `Pt performed ${values[0]} ${values[1]} ${values[2]} ${values[3]} ${values[4]} x ${values[5]} ${values[6]}: ${values[7]} for ${values[8]}`,
+        transfer: `Pt performed ${values[0]} ${values[1]} ${values[2]} ${values[3]} reps + ${values[4]} ${values[5]} ${values[6]}.`,
+        ambulation: `Pt performed ${values[0]}' for ${values[1]} bouts  ${values[2]} ${values[3]} + ${values[4]} ${values[5]} ${values[6]}.`,
+        stairs: `Pt performed ${values[0]} steps at ${values[1]} height ${values[2]} ${values[3]} + ${values[4]} ${values[5]} ${values[6]}.`,
+        exercise: `Pt performed ${values[0]} ${values[1]} ${values[2]} ${values[3]} ${values[4]} x ${values[5]} + ${values[6]} ${values[7]} for ${values[8]}.`,
         group: `Pt participated in ${values[0]} group with ${values[1]} participants, to improve ${values[2]}. Pt demo's ${values[3]} participation in this session.`,
     };
 
